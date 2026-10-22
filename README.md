@@ -1,6 +1,6 @@
 # Zero脱敏 · 本地批量信息脱敏工具
 
-一款 **Windows 本地、完全免费开源** 的批量个人信息脱敏工具：拖入图片 / PDF / Word / Excel / 压缩包，自动识别其中的手机号、身份证号、银行卡号、邮箱并生成脱敏遮罩，人工复核后一键批量导出，数据不出本机。
+一款 **Windows 本地、完全免费** 的批量个人信息脱敏工具：拖入图片 / PDF / Word / Excel / 压缩包，自动识别其中的手机号、身份证号、银行卡号、邮箱并生成脱敏遮罩，人工复核后一键批量导出，数据不出本机。
 
 ## 核心特性
 
@@ -24,10 +24,7 @@
 
 ## 快速开始
 
-**方式一（推荐）：直接下载 Windows 桌面版**
-
-前往 [Releases 页面](https://github.com/AiShen-orb/Zero/releases) 下载 `Zero-v1.0.0-win.zip`，解压后双击 `Zero.exe` 即可使用，无需安装任何环境。
-
+前往 [Releases 页面](https://github.com/Theshy890/Zero/releases) 下载 `Zero-v1.0.0-win.zip`，解压后双击 `Zero.exe` 即可使用，无需安装任何环境。
 
 ## 使用流程
 
@@ -54,7 +51,7 @@
 ## 安全与隐私说明
 
 - OCR 使用 **PaddleOCR / PP-OCRv6 轻量文字识别模型**（非通用 AI 大模型），在本机 CPU 推理。
-- **首次运行 OCR 会联网下载模型文件**（约几十 MB），之后完全离线、缓存于 `~/.paddlex`。若用于完全断网交付，请在打包时把模型一并内置（见 PRD 7.2）。
+- **首次运行 OCR 会联网下载模型文件**（约几十 MB），之后完全离线、缓存于 `~/.paddlex`。若用于完全断网交付，请在打包时把模型一并内置。
 - 全程不调用云端接口，不采集、不上报任何数据。
 
 ## 已知边界（能力声明）
@@ -62,26 +59,9 @@
 - Word 仅处理正文段落与表格单元格文本，页眉页脚 / 文本框 / 超链接 / 内嵌图片暂不处理。
 - Excel 仅处理文本 / 数值单元格，公式单元格与内嵌图片暂不处理。
 - PDF 输出采用「整页渲染成图 → 脱敏 → 重合成图片型 PDF」的方式，会移除原始文本层（更安全，但文件体积变大、文本不可选中）。
-- 身份证若在 Excel 中以数值形式存储，Excel 本身会丢失精度，建议数据以文本保存。- 如果身份证在 Excel 中以数值形式存储，Excel 本身会丢失精度，建议数据以文本保存。
+- 身份证若在 Excel 中以数值形式存储，Excel 本身会丢失精度，建议数据以文本保存。
 - 机器识别仅作辅助筛查，**人工复核是必要环节**。
-
-## 项目结构
-
-```
-main.py                       # 图形界面入口
-app.py                        # Flet 图形界面
-self_test.py                  # 自测脚本（python self_test.py [--ocr]）
-zero_desensitize/
-  config.py                   # 支持格式、正则规则、上限 config.py                   # 支持格式、正则规则、上限 config.py                   # 支持格式、正则规则、上限 config.py                   # 支持格式、正则规则、上限 config.py                   # 支持格式、正则规则、上限 config.py                   # 支持格式、正则规则、上限 config.py                   # 支持格式、正则规则、上限 config.py                   # 支持格式、正则规则、上限 config.py                   # 支持格式、正则规则、上限 config.py                   # 支持格式、正则规则、上限 config.py                   # 支持格式、正则规则、上限 config.py                   # 支持格式、正则规则、上限 config.py                   # 支持格式、正则规则、上限 config.py                   # 支持格式、正则规则、上限 config.py                   # 支持格式、正则规则、上限 config.py                   # 支持格式、正则规则、上限
-  pii.py                      # PII 正则识别 pii.py                      # PII 正则识别 pii.py                      # PII 正则识别 pii.py                      # PII 正则识别
-  ocr.py                      # PaddleOCR 封装（含优雅降级）
-  models.py                   # 数据模型 models.py                   # 数据模型
-  detection.py                # 遮罩生成 detection.py                # 遮罩生成
-  masking.py                  # 遮罩渲染（纯色/马赛克/星号） masking.py                  # 遮罩渲染（纯色/马赛克/星号） masking.py                  # 遮罩渲染（纯色/马赛克/星号） masking.py                  # 遮罩渲染（纯色/马赛克/星号） masking.py                  # 遮罩渲染（纯色/马赛克/星号） masking.py                  # 遮罩渲染（纯色/马赛克/星号） masking.py                  # 遮罩渲染（纯色/马赛克/星号） masking.py                  # 遮罩渲染（纯色/马赛克/星号） masking.py                  # 遮罩渲染（纯色/马赛克/星号） masking.py                  # 遮罩渲染（纯色/马赛克/星号） masking.py                  # 遮罩渲染（纯色/马赛克/星号） masking.py                  # 遮罩渲染（纯色/马赛克/星号） masking.py                  # 遮罩渲染（纯色/马赛克/星号） masking.py                  # 遮罩渲染（纯色/马赛克/星号） masking.py                  # 遮罩渲染（纯色/马赛克/星号） masking.py                  # 遮罩渲染（纯色/马赛克/星号）
-  pipeline.py                 # 批量编排与导出 pipeline.py                 # 批量编排与导出 pipeline.py                 # 批量编排与导出 pipeline.py                 # 批量编排与导出 pipeline.py                 # 批量编排与导出 pipeline.py                 # 批量编排与导出 pipeline.py                 # 批量编排与导出 pipeline.py                 # 批量编排与导出 pipeline.py                 # 批量编排与导出 pipeline.py                 # 批量编排与导出 pipeline.py                 # 批量编排与导出 pipeline.py                 # 批量编排与导出 pipeline.py                 # 批量编排与导出 pipeline.py                 # 批量编排与导出 pipeline.py                 # 批量编排与导出 pipeline.py                 # 批量编排与导出
-  processors/                 # 各文件类型处理器 processors/                 # 各文件类型处理器
-```
 
 ## 许可证
 
-MIT。依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。MIT。所依赖的 PaddleOCR 采用 Apache 2.0 许可。
+MIT 许可（详见仓库根目录 `LICENSE` 文件）。依赖的 PaddleOCR 采用 Apache 2.0 许可。
