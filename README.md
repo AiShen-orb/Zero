@@ -24,7 +24,7 @@
 
 ## 快速开始
 
-前往 [Releases 页面](https://github.com/Theshy890/Zero/releases) 下载 `Zero-v1.0.0-win.zip`，解压后双击 `Zero.exe` 即可使用，无需安装任何环境。
+前往 [Releases 页面](https://github.com/AiShen-orb/Zero/releases) 下载 `Zero-v1.0.0-win.zip`，解压后双击 `Zero.exe` 即可使用，无需安装任何环境。
 
 ## 使用流程
 
